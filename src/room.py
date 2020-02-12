@@ -10,8 +10,14 @@ class Room():
     info = ''
     info  += f'{self.name} \n{self.description} \n'
     return info
-    
-    
-house = Room('mansion', 'extremely luxurious')
-
-print(house)
+  # def display_current_room:
+  #   print(f'')
+  #   room_name = ''
+  # #   for 
+  # #   for 
+  
+  '''
+  * Create the REPL command parser in `adv.py` which allows the player to move to rooms
+  in the four cardinal directions.
+* Fill out Player and Room classes in `player.py` and `room.py`
+'''

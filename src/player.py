@@ -1,5 +1,6 @@
 # Write a class to hold player information, e.g. what room they are in
 # currently.
+from room import Room
 
 # class Player: 
 #   def __init__(self, player_name, room, gender):
@@ -19,7 +20,6 @@
 # print(wick)
   
 #inheritance 
-from room import Room
 
 # class Player(Room): 
 #   def __init__(self,name, description, player_name, gender):
@@ -40,10 +40,11 @@ class Player:
     self.gender = gender 
     self.room = Room
     
-  def __str__(self):
-    player_info = ''
-    player_info += f'{self.player_name} \n{self.room}\n {self.gender}\n'
-    return player_info
+    
+  # def __str__(self):
+  #   player_info = ''
+  #   player_info += f'{self.player_name} \n{self.room}\n {self.gender}\n'
+  #   return player_info
   
  
   
