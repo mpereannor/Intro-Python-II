@@ -38,6 +38,9 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
+from player import Player 
+
+avatar = Player('Outside Cave Entrance', 'North of you, the cave mount beckons', 'John Wick', 'male')
 
 # Write a loop that:
 #
