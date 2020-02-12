@@ -38,7 +38,12 @@ class Player:
   def __init__(self, player_name, gender):
     self.player_name = player_name
     self.gender = gender 
-    self.room = Room 
+    self.room = Room
+    
+  def __str__(self):
+    player_info = ''
+    player_info += f'{self.player_name} \n{self.room}\n {self.gender}\n'
+    return player_info
   
  
   
