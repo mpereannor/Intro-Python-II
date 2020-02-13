@@ -1,6 +1,5 @@
 from room import Room
 from player import Player 
-import textwrap
 
 # Declare all the rooms
 
@@ -41,75 +40,75 @@ room['treasure'].s_to = room['narrow']
 
 # Make a new player object that is currently in the 'outside' room.
 
-avatar = Player('John Wick', 'male')
-avatar.room = room['outside']
+# avatar = Player('John Wick', 'male')
+# avatar.room = room['outside']
 
 # Write a loop that:
-for r in room:
 # * Prints the current room name
-  print(f'{room[r].name} \n')
 # * Prints the current description (the textwrap module might be useful here).
-  desc = room[r].description
-  wrapper = textwrap.TextWrapper(width=10)
-  print(wrapper.wrap(text=desc))
-  print('___________')
-  print('')
 # * Waits for user input and decides what to do.
-  
+
+avatar = Player(player_name)
+avatar.current_room = room['outside']
+# print(f'{current_room.name} \n')
+# print(f'{current_room.description}\n')
+print('___________')
+print('')
   #initialize
-  choice = input('brave soul, move to your preferred room \n[n] ==> North\n[e] ==> East\n[s] ==> South\n[w] ==> West\n[q] ===> Quit\n' )
-  current_room = room[r].name
+print(f'Welcome {avatar.player_name}! you brave soul, move to your preferred room ')
+choice = input(
+  '[n] ==> North\n[e] ==> East\n[s] ==> South\n[w] ==> West\n[q] ===> Quit\n' )
+while True:
+# If the user enters a cardinal direction, attempt to move to the room there.
   try:
-    if current_room == 'outside':
-      if choice == n_to:
-        print('welcome to the Foyer!')
-      # current_room += 1
-        current_room + 1
+    if avatar.current_room == 'outside':
+      if choice == 'n':
+        print(f'welcome to the{avatar.current_room.name}!')
+        print(f'welcome to the{avatar.current_room.description}!')
+        avatar.current_room 
       else:
         print("you can only head north")
-        
-    elif current_room == 'foyer':
-      if choice == s_to:
+      
+    elif avatar.current_room == 'foyer':
+      if choice == 's':
         print("welcome to the outside")
-        # current_room -= 1
-        current_room - 1
-      elif choice == n_to:
+        avatar.current_room 
+      elif choice == 'n':
         print('welcome to the Overlook, watch your step')
-        current_room + 1
-      elif choice == e_to:
+        avatar.current_room 
+      elif choice == 'e':
         print('welcome to the passage, watch your step')
-        current_room + 2
+        avatar.current_room 
       else:
         print("unfortunately you can not go west Columbus!")
-        
-    elif current_room == 'overlook':
-      if choice == s_to:
+      
+    elif avatar.current_room == 'overlook':
+      if choice == 's':
         print("welcome to the Foyer!")
-        current_room - 1
+        avatar.current_room 
       else:
         print("you can only go south from this room")
-        
-    elif current_room == 'narrow':
-      if choice == w_to:
+      
+    elif avatar.current_room == 'narrow':
+      if choice == 'w':
         print('welcome to the Foyer!')
-        current_room - 2
-      elif choice == n_to:
+        avatar.current_room 
+      elif choice == 's':
         print('welcome to treasure room')
-        current_room + 1
+        avatar.current_room 
       else:
         print('you can only go west or north')
         
-    elif current_room == 'treasure':
-      if choice == s_to:
+    elif avatar.current_room == 'treasure':
+      if choice == 's':
         print('welcome to the passage, watch your step')
-        current_room - 1
+        avatar.current_room - 1
       else:
         print('you can only go south from this room')
-  else:
-        print('game exiting')
+# Print an error message if the movement isn't allowed.
+  except ValueError:
+      print('invalid selection, please try again ')
 
 #
-# If the user enters a cardinal direction, attempt to move to the room there.
-# Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
