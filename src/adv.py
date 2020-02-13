@@ -47,68 +47,71 @@ room['treasure'].s_to = room['narrow']
 # * Prints the current room name
 # * Prints the current description (the textwrap module might be useful here).
 # * Waits for user input and decides what to do.
+# If the user enters "q", quit the game.
 
-avatar = Player(player_name)
-avatar.current_room = room['outside']
+# Print an error message if the movement isn't allowed.
 # print(f'{current_room.name} \n')
 # print(f'{current_room.description}\n')
-print('___________')
-print('')
-  #initialize
-print(f'Welcome {avatar.player_name}! you brave soul, move to your preferred room ')
-choice = input(
-  '[n] ==> North\n[e] ==> East\n[s] ==> South\n[w] ==> West\n[q] ===> Quit\n' )
-while True:
 # If the user enters a cardinal direction, attempt to move to the room there.
-  try:
-    if avatar.current_room == 'outside':
-      if choice == 'n':
-        print(f'welcome to the{avatar.current_room.name}!')
-        print(f'welcome to the{avatar.current_room.description}!')
-        avatar.current_room 
-      else:
-        print("you can only head north")
-      
-    elif avatar.current_room == 'foyer':
-      if choice == 's':
-        print("welcome to the outside")
-        avatar.current_room 
-      elif choice == 'n':
-        print('welcome to the Overlook, watch your step')
-        avatar.current_room 
-      elif choice == 'e':
-        print('welcome to the passage, watch your step')
-        avatar.current_room 
-      else:
-        print("unfortunately you can not go west Columbus!")
-      
-    elif avatar.current_room == 'overlook':
-      if choice == 's':
-        print("welcome to the Foyer!")
-        avatar.current_room 
-      else:
-        print("you can only go south from this room")
-      
-    elif avatar.current_room == 'narrow':
-      if choice == 'w':
-        print('welcome to the Foyer!')
-        avatar.current_room 
-      elif choice == 's':
-        print('welcome to treasure room')
-        avatar.current_room 
-      else:
-        print('you can only go west or north')
-        
-    elif avatar.current_room == 'treasure':
-      if choice == 's':
-        print('welcome to the passage, watch your step')
-        avatar.current_room - 1
-      else:
-        print('you can only go south from this room')
-# Print an error message if the movement isn't allowed.
-  except ValueError:
-      print('invalid selection, please try again ')
 
-#
-#
-# If the user enters "q", quit the game.
+  #initialize
+player_name = input(f'Welcome! you brave soul,  enter your name ' )
+avatar = Player(player_name, room['outside'])
+position = avatar.current_room
+success = input(f'Welcome! {avatar.player_name}, You are currently in {position.name} move to your preferred room... Press Enter...')
+
+choice = ''
+while choice == '':
+  choice = input(
+    '[n] ==> North\n[e] ==> East\n[s] ==> South\n[w] ==> West\n[q] ===> Quit\n' )
+  try:
+    
+    if choice == 'n':
+      if position == room['outside']:
+        position.n_to
+        print(f'welcome to the{position.name}!')
+        print(f'{position.description}!')
+        choice = ''
+      elif position == room['foyer']:
+        position.n_to
+        print(f'welcome to the{position.name}!')
+        print(f'{position.description}!')
+        choice = ''
+      elif position == room['narrow']:
+        position.n_to
+        print(f'welcome to the{position.name}!')
+        print(f'{position.description}!')
+        choice = ''
+             
+    elif choice == 's':
+      if position == room['foyer']:
+        position.s_to
+        print(f'welcome to the{position.name}!')
+        print(f'{position.description}!')
+        choice = ''
+      elif position == room['treasure']:
+        position.s_to
+        print(f'welcome to the{position.name}!')
+        print(f'{position.description}!')
+        choice = ''
+    
+    elif choice == 'e':
+      if position == room['foyer']:
+        position.e_to
+        print(f'welcome to the{position.name}!')
+        print(f'{position.description}!')
+        choice = ''
+        
+    elif choice == 'w':
+      if position == room['narrow']:
+        position.w_to
+        print(f'welcome to the{position.name}!')
+        print(f'{position.description}!')
+        choice = ''
+    
+    elif choice == 'q':
+      print(f'exiting game {avatar.player_name}')
+        
+    else:
+      print('invalid selection, please try again')
+      choice = ''

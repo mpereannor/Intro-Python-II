@@ -4,8 +4,8 @@ from room import Room
 
   #composition 
 class Player:
-  def __init__(self, player_name):
+  def __init__(self, player_name, current_room):
     self.player_name = player_name
-    self.current_room = None
+    self.current_room = current_room
     
     
