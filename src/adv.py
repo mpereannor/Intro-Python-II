@@ -55,11 +55,82 @@ room['treasure'].s_to = room['narrow']
 # If the user enters a cardinal direction, attempt to move to the room there.
 
   #initialize
+  
+  
+  
+  
+avatar = Player('Chuck Norris', room['outside'])
+choice = ''
+success = input(f'Welcome! {avatar.player_name}, You are currently in {avatar.current_room} move to your preferred room... Press Enter...')
+while True:
+  print(f'hello {avatar.player_name}, you are currently in {avatar.current_room} move to you preferred room.')
+  choice = input( 'Hey, kindly choose your direction [n] ==> North\n[e] ==> East\n[s] ==> South\n[w] ==> West\n[q] ===> Quit\n' )
+  
+  current_room = avatar.current_room
+  if choice == 'n':
+    print('you choose the north ')
+    next_room = avatar.current_room.n_to
+    avatar.move_player(next_room)
+  elif choice == 's':
+    print('you choose the south, bold choice')
+    next_room = avatar.current_room.s_to
+    avatar.move_player(next_room)
+  elif choice == 'e':
+    print('you choose the east, ....okay!')
+    next_room = avatar.current_room.e_to
+    avatar.move_player(next_room)
+  elif choice == 'w':
+    print('you choose the west, NOOICE!')
+    next_room = avatar.current_room.w_to
+    avatar.move_player(next_room)
+  elif choice == 'q':
+    print('bye')
+    break
+  else:
+    error = 'invalid input'
+    print(error)
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#previous attempt
+'''
 player_name = input(f'Welcome! you brave soul,  enter your name ' )
 avatar = Player(player_name, room['outside'])
-position = avatar.current_room
+position = avatar.room
 success = input(f'Welcome! {avatar.player_name}, You are currently in {position.name} move to your preferred room... Press Enter...')
-
 choice = ''
 while choice == '':
   choice = input(
@@ -67,51 +138,57 @@ while choice == '':
   try:
     
     if choice == 'n':
-      if position == room['outside']:
-        position.n_to
-        print(f'welcome to the{position.name}!')
-        print(f'{position.description}!')
+      if avatar ==  Player(player_name, room['outside']):
+         avatar = Player(player_name, room['outside'].n_to)
+         print(f'welcome to the {avatar.room}!')
+         choice = ''
+          
+      elif avatar ==  Player(player_name, room['foyer']):
+        avatar = Player(player_name, room['foyer'].n_to)
+        print(f'welcome to the {avatar.room}!')
+        # print(f'{position.description}!')
         choice = ''
-      elif position == room['foyer']:
-        position.n_to
-        print(f'welcome to the{position.name}!')
-        print(f'{position.description}!')
+      elif avatar ==  Player(player_name, room['narrow']):
+        avatar = Player(player_name, room['narrow'].n_to)
+        print(f'welcome to the {avatar.room}!')
         choice = ''
-      elif position == room['narrow']:
-        position.n_to
-        print(f'welcome to the{position.name}!')
-        print(f'{position.description}!')
-        choice = ''
-             
+           
     elif choice == 's':
       if position == room['foyer']:
         position.s_to
-        print(f'welcome to the{position.name}!')
+        print(f'welcome to the {position.name}!')
         print(f'{position.description}!')
         choice = ''
       elif position == room['treasure']:
         position.s_to
-        print(f'welcome to the{position.name}!')
+        print(f'welcome to the {position.name}!')
         print(f'{position.description}!')
+        choice = ''
+      else: 
+        print('wrong choice try again')
         choice = ''
     
     elif choice == 'e':
       if position == room['foyer']:
         position.e_to
-        print(f'welcome to the{position.name}!')
+        print(f'welcome to the {position.name}!')
         print(f'{position.description}!')
         choice = ''
         
     elif choice == 'w':
       if position == room['narrow']:
         position.w_to
-        print(f'welcome to the{position.name}!')
+        print(f'welcome to the {position.name}!')
         print(f'{position.description}!')
         choice = ''
     
     elif choice == 'q':
       print(f'exiting game {avatar.player_name}')
-        
+
     else:
       print('invalid selection, please try again')
       choice = ''
+  except TypeError:
+    print('try again')
+    choice= ''
+   ''' 

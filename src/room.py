@@ -1,6 +1,6 @@
 # Implement a class to hold room information. This should have name and
 # description attributes.
-
+from item import Item
 class Room:
   def __init__(self, name, description): 
     self.name = name 
@@ -9,6 +9,7 @@ class Room:
     self.e_to = None
     self.s_to = None
     self.w_to = None
+    # self.item = Item
     
     
     
@@ -18,8 +19,3 @@ class Room:
     return info
   
   
-  '''
-  * Create the REPL command parser in `adv.py` which allows the player to move to rooms
-  in the four cardinal directions.
-* Fill out Player and Room classes in `player.py` and `room.py`
-'''
